@@ -1,11 +1,847 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
     <title>UI Engineer Test</title>
-</head>
-<body>
-    <h1>Hello World</h1>
-</body>
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .text-primary {
+        color: #080c2e;
+      }
+
+      .text-secondary {
+        color: #5d5d7c;
+      }
+
+      .text-primary-purple {
+        color: #640ef1;
+      }
+
+      header ul li button.collapse-menu::after {
+        content: url("./assets/icons/arrow-down.svg");
+        height: 18px;
+        width: 18px;
+        margin-left: 4px;
+      }
+
+      #btnNav.active {
+        rotate: 90deg;
+        transition: all ease-in-out 0.3s;
+      }
+
+      .mobile-nav {
+        right: -1000px;
+        left: 1000px;
+        transition: all ease-in-out 0.3s;
+      }
+
+      .mobile-nav.active {
+        left: 0;
+        right: 0;
+      }
+    </style>
+  </head>
+
+  <body class="bg-[#F1F4F5]">
+    <!-- Mobile Menu -->
+    <div class="fixed bg-[#F1F4F5] top-0 bottom-0 z-50 mobile-nav lg:hidden">
+      <ul class="flex flex-col gap-[30px] mt-24 px-4">
+        <li>
+          <button class="text-primary flex items-center font-medium text-base">
+            Products
+          </button>
+        </li>
+        <li>
+          <button
+            class="text-primary flex items-center font-medium text-base collapse-menu"
+          >
+            Services
+          </button>
+        </li>
+        <li>
+          <button class="text-primary flex items-center font-medium text-base">
+            Pricing
+          </button>
+        </li>
+        <li>
+          <button class="text-primary flex items-center font-medium text-base">
+            Testimonials
+          </button>
+        </li>
+        <li>
+          <button class="text-primary flex items-center font-medium text-base">
+            Blog
+          </button>
+        </li>
+        <li class="flex flex-row gap-8 items-center">
+          <button
+            class="flex-1 py-[10px] px-[30px] bg-[#080C2E] text-white rounded-[100px] text-base font-semibold"
+          >
+            Sign In
+          </button>
+          <button
+            class="bg-white rounded-full size-[44px] grid place-items-center"
+          >
+            <img src="./assets/icons/cart.svg" alt="icon-cart" />
+          </button>
+        </li>
+      </ul>
+    </div>
+    <header
+      class="py-4 sm:py-[30px] bg-[#F1F4F5]/50 fixed top-0 right-0 left-0 backdrop-blur-2xl antialiased z-50 px-4 lg:px-6 xl:px-0"
+    >
+      <div class="flex flex-row justify-between items-center max-w-7xl m-auto">
+        <img
+          src="./assets/icons/weserve.svg"
+          alt="brand-icon"
+          class="w-36 sm:w-44"
+        />
+        <button id="btnNav" class="block lg:hidden">
+          <img
+            src="./assets/icons/hamburger.svg"
+            alt="hamburger"
+            class="size-6"
+          />
+        </button>
+
+        <!-- Desktop Menu -->
+        <ul class="hidden lg:flex flex-row gap-[30px]">
+          <li>
+            <button
+              class="text-primary flex items-center font-medium text-base"
+            >
+              Products
+            </button>
+          </li>
+          <li>
+            <button
+              class="text-primary flex items-center font-medium text-base collapse-menu"
+            >
+              Services
+            </button>
+          </li>
+          <li>
+            <button
+              class="text-primary flex items-center font-medium text-base"
+            >
+              Pricing
+            </button>
+          </li>
+          <li>
+            <button
+              class="text-primary flex items-center font-medium text-base"
+            >
+              Testimonials
+            </button>
+          </li>
+          <li>
+            <button
+              class="text-primary flex items-center font-medium text-base"
+            >
+              Blog
+            </button>
+          </li>
+        </ul>
+        <div class="hidden lg:flex flex-row gap-[10px]">
+          <button
+            class="bg-white rounded-full size-[44px] grid place-items-center"
+          >
+            <img src="./assets/icons/cart.svg" alt="icon-cart" />
+          </button>
+          <button
+            class="py-[10px] px-[30px] bg-[#080C2E] text-white rounded-[100px] text-base font-semibold"
+          >
+            Sign In
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="mt-[80px] md:mt-[120px] lg:mt-[183px]">
+      <!-- hero banner section -->
+      <section
+        class="max-w-7xl m-auto flex flex-col md:flex-row gap-8 sm:gap-0 items-center justify-between px-4 md:px-6 xl:px-0"
+      >
+        <aside class="flex flex-col gap-[20px] sm:gap-[40px]">
+          <div
+            class="flex flex-row items-center justify-center gap-[6px] bg-white rounded-[100px] px-4 py-2 w-fit"
+          >
+            <img src="./assets/icons/global.svg" alt="global-icon" />
+            <h3 class="font-semibold text-primary text-sm sm:text-base">
+              We host more than 120,000 websites
+            </h3>
+          </div>
+          <div class="flex flex-col gap-[10px] max-w-[574px]">
+            <h1 class="text-[70px] tracking-normal leading-none text-primary">
+              Grow Online Business Faster.
+            </h1>
+            <h2 class="text-base font-medium text-secondary leading-8">
+              We provide a variety of servers to grow your users <br />
+              acquisition much user-friendly and boosting up sales.
+            </h2>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-[20px]">
+            <button
+              class="py-4 px-10 font-bold text-white bg-[#640EF1] rounded-[100px]"
+            >
+              Try Free Trial
+            </button>
+            <button class="flex flex-row items-center justify-center gap-2">
+              <img
+                src="./assets/icons/device-message.svg"
+                alt="device-message"
+              />
+              <span class="text-[#640EF1] font-semibold text-base"
+                >Schedule a Demo</span
+              >
+            </button>
+          </div>
+        </aside>
+        <aside>
+          <img
+            width="500"
+            src="./assets/illustration/bwa-illustration-1.png"
+            alt="illustration-hero"
+          />
+        </aside>
+      </section>
+
+      <!-- list brand section -->
+      <section
+        class="flex flex-row items-center justify-evenly sm:justify-center flex-wrap gap-[50px] my-[100px] px-2 xl:px-[107px] max-w-7xl m-auto"
+      >
+        <img
+          class="grayscale hover:grayscale-0 transition-all"
+          src="./assets/icons/brand-logo-1.svg"
+          alt="brand-logo-1"
+        />
+        <img
+          class="grayscale hover:grayscale-0 transition-all"
+          src="./assets/icons/brand-logo-2.svg"
+          alt="brand-logo-2"
+        />
+        <img
+          class="grayscale hover:grayscale-0 transition-all"
+          src="./assets/icons/brand-logo-3.svg"
+          alt="brand-logo-3"
+        />
+        <img
+          class="grayscale hover:grayscale-0 transition-all"
+          src="./assets/icons/brand-logo-1.svg"
+          alt="brand-logo-1"
+        />
+        <img
+          class="grayscale hover:grayscale-0 transition-all"
+          src="./assets/icons/brand-logo-4.svg"
+          alt="brand-logo-4"
+        />
+      </section>
+
+      <!-- perks section -->
+      <section class="max-w-7xl m-auto px-4 md:px-6 xl:px-0">
+        <h3
+          class="mb-[30px] text-4xl sm:text-[46px] font-semibold text-center text-primary"
+        >
+          Your Best Choice
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-[30px]">
+          <div
+            class="bg-white rounded-2xl px-6 py-[30px] flex flex-col gap-[30px]"
+          >
+            <img
+              src="./assets/icons/perks-1.svg"
+              alt="perks-1"
+              class="size-[46px]"
+            />
+            <div class="mb-1">
+              <h4 class="text-[22px] font-bold text-primary">Extra Layers</h4>
+              <h5 class="text-secondary text-base leading-7">
+                Making your project more secure avoiding DDoS
+              </h5>
+            </div>
+            <button class="w-fit text-primary-purple text-base font-semibold">
+              Learn more
+            </button>
+          </div>
+          <div
+            class="bg-white rounded-2xl px-6 py-[30px] flex flex-col gap-[30px]"
+          >
+            <img
+              src="./assets/icons/perks-2.svg"
+              alt="perks-2"
+              class="size-[46px]"
+            />
+            <div class="mb-1">
+              <h4 class="text-[22px] font-bold text-primary">Customizable</h4>
+              <h5 class="text-secondary text-base leading-7">
+                Only install what your business needs to grow
+              </h5>
+            </div>
+            <button class="w-fit text-primary-purple text-base font-semibold">
+              Learn more
+            </button>
+          </div>
+          <div
+            class="bg-[#080C2E] rounded-2xl px-6 py-[30px] flex flex-col gap-[30px] relative"
+          >
+            <img
+              src="./assets/icons/shadow-card.svg"
+              alt="shadow-card"
+              class="absolute right-1 top-1 z-0"
+            />
+            <img
+              src="./assets/icons/perks-3.svg"
+              alt="perks-3"
+              class="size-[46px] relative z-[1]"
+            />
+            <div class="mb-1 relative z-[1]">
+              <h4 class="text-[22px] font-bold text-white">AI Automation</h4>
+              <h5 class="text-[#8D90A8] text-base leading-7">
+                Decide the business flow based on latest reports
+              </h5>
+            </div>
+            <button class="w-fit text-white text-base font-semibold">
+              Learn more
+            </button>
+          </div>
+          <div
+            class="bg-white rounded-2xl px-6 py-[30px] flex flex-col gap-[30px] col-span-1 sm:col-span-3 md:max-xl:text-center xl:col-span-1"
+          >
+            <img
+              src="./assets/icons/perks-4.svg"
+              alt="perks-4"
+              class="size-[46px] md:max-xl:m-auto"
+            />
+            <div class="mb-1">
+              <h4 class="text-[22px] font-bold text-primary">Auto-Scaling</h4>
+              <h5 class="text-secondary text-base leading-7">
+                Have a long weekend without worrying any loss
+              </h5>
+            </div>
+            <button
+              class="w-fit text-primary-purple text-base font-semibold md:max-xl:m-auto"
+            >
+              Learn more
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ecosystem section -->
+      <section
+        class="max-w-7xl m-auto mt-[50px] xl:mt-[100px] mb-[100px] flex flex-col lg:flex-row justify-between items-center gap-[70px] px-4 md:px-6 xl:px-0"
+      >
+        <aside>
+          <img
+            src="./assets/illustration/bwa-illustration-2.png"
+            alt="illustration-ecosystem"
+            class="md:w-[500px] xl:w-[800px]"
+          />
+        </aside>
+        <aside class="flex flex-col gap-[40px] xl:mr-[60px]">
+          <div class="max-w-[80%] text-center xl:text-left max-xl:m-auto">
+            <h3
+              class="text-4xl sm:text-[46px] font-semibold text-primary mb-[10px]"
+            >
+              We Have Very Strong Ecosystem
+            </h3>
+            <h5 class="text-secondary font-medium text-base leading-8">
+              We provide a variety of servers to grow your users acquisition
+              much user-friendly and boosting up sales.
+            </h5>
+          </div>
+          <div class="flex flex-col gap-[20px]">
+            <div class="flex flex-row gap-4 p-[20px] rounded-2xl bg-white">
+              <img src="./assets/icons/health-icon.svg" alt="ecosystem-1" />
+              <div class="flex flex-col">
+                <h4 class="text-[22px] font-bold leading-6 text-primary">
+                  $880 Mio
+                </h4>
+                <h5 class="text-base font-medium text-secondary">
+                  Company budget saved
+                </h5>
+              </div>
+            </div>
+            <div class="flex flex-row gap-4 p-[20px] rounded-2xl bg-white">
+              <img src="./assets/icons/cpu-icon.svg" alt="ecosystem-2" />
+              <div class="flex flex-col">
+                <h4 class="text-[22px] font-bold leading-6 text-primary">
+                  450,392
+                </h4>
+                <h5 class="text-base font-medium text-secondary">
+                  All servers available
+                </h5>
+              </div>
+            </div>
+            <div class="flex flex-row gap-4 p-[20px] rounded-2xl bg-white">
+              <img src="./assets/icons/cloud-icon.svg" alt="ecosystem-3" />
+              <div class="flex flex-col">
+                <h4 class="text-[22px] font-bold leading-6 text-primary">
+                  189 Mio
+                </h4>
+                <h5 class="text-base font-medium text-secondary">
+                  Websites are running good
+                </h5>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-[20px]">
+            <button
+              class="py-4 px-10 font-bold text-white bg-[#640EF1] rounded-[100px]"
+            >
+              Explore More
+            </button>
+            <button class="flex flex-row items-center justify-center gap-2">
+              <img
+                src="./assets/icons/device-message.svg"
+                alt="device-message"
+              />
+              <span class="text-[#640EF1] font-semibold text-base"
+                >Schedule a Demo</span
+              >
+            </button>
+          </div>
+        </aside>
+      </section>
+
+      <!-- showcase section -->
+      <section class="max-w-7xl m-auto">
+        <div class="flex flex-col gap-[10px] text-center mb-[30px]">
+          <h3
+            class="text-4xl sm:text-[46px] font-semibold text-primary mb-[10px]"
+          >
+            Our Showcase
+          </h3>
+          <h4 class="max-w-[80%] xl:max-w-[42%] m-auto">
+            They built amazing website to help more people around the world by
+            using our recommendation services and products
+          </h4>
+        </div>
+
+        <div
+          class="flex flex-row gap-[40px] items-center max-w-full overflow-scroll"
+        >
+          <img
+            class="h-[220px] w-auto"
+            src="./assets/illustration/showcase-1.png"
+            alt="showcase-1"
+          />
+          <img
+            class="h-[220px] w-auto"
+            src="./assets/illustration/showcase-2.png"
+            alt="showcase-2"
+          />
+          <img
+            class="h-[220px] w-auto"
+            src="./assets/illustration/showcase-3.png"
+            alt="showcase-3"
+          />
+          <img
+            class="h-[220px] w-auto"
+            src="./assets/illustration/showcase-4.png"
+            alt="showcase-4"
+          />
+        </div>
+      </section>
+
+      <!-- faq section -->
+      <section class="max-w-7xl m-auto my-[100px] px-4 md:px-6 xl:px-0">
+        <h3
+          class="text-4xl sm:text-[46px] font-semibold text-primary text-center mb-[30px]"
+        >
+          Frequently Asked Questions
+        </h3>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-[20px] sm:gap-[30px]">
+          <div class="flex flex-col gap-[20px]">
+            <!-- faq 1 -->
+            <div class="bg-white p-[20px] rounded-2xl h-auto">
+              <div class="flex flex-row items-center justify-between gap-4">
+                <h5 class="text-lg xl:text-[20px] font-bold text-primary">
+                  Why do we need to use Kapp?
+                </h5>
+                <div class="size-[30px] rounded-full grid place-items-center">
+                  <img src="./assets/icons/arrow-down.svg" alt="arrow-down" />
+                </div>
+              </div>
+            </div>
+            <!-- faq 2 -->
+            <div class="bg-white p-[20px] rounded-2xl h-auto">
+              <div class="flex flex-row items-center justify-between gap-4">
+                <h5 class="text-lg xl:text-[20px] font-bold text-primary">
+                  Do we need to pay 6 months per item?
+                </h5>
+                <div
+                  class="size-[30px] rounded-full bg-black grid place-items-center"
+                >
+                  <img
+                    src="./assets/icons/arrow-down.svg"
+                    class="brightness-0 invert rotate-180"
+                    alt="arrow-down"
+                  />
+                </div>
+              </div>
+              <div class="mt-5">
+                <p>
+                  Kapp is able to develop by themselve without removing the
+                  parents permission and lorem dolor si amet fully run network
+                  at 100% avoiding data-loss at any moments
+                </p>
+                <button
+                  class="w-fit text-primary-purple text-base font-semibold mt-[20px]"
+                >
+                  Learn more
+                </button>
+              </div>
+            </div>
+            <!-- faq 3 -->
+            <div class="bg-white p-[20px] rounded-2xl h-auto">
+              <div class="flex flex-row items-center justify-between gap-4">
+                <h5 class="text-lg xl:text-[20px] font-bold text-primary">
+                  How to migrate from other service?
+                </h5>
+                <div
+                  class="size-[30px] rounded-full grid place-items-center"
+                >
+                  <img
+                    src="./assets/icons/arrow-down.svg"
+                    alt="arrow-down"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col gap-[20px]">
+            <!-- faq 1 -->
+            <div class="bg-white p-[20px] rounded-2xl h-auto">
+              <div class="flex flex-row items-center justify-between gap-4">
+                <h5 class="text-lg xl:text-[20px] font-bold text-primary">
+                  What if data doesn’t get stored?
+                </h5>
+                <div
+                  class="size-[30px] rounded-full bg-black grid place-items-center"
+                >
+                  <img
+                    src="./assets/icons/arrow-down.svg"
+                    class="brightness-0 invert rotate-180"
+                    alt="arrow-down"
+                  />
+                </div>
+              </div>
+              <div class="mt-5">
+                <p>
+                  Kapp is able to develop by themselve without removing the
+                  parents permission and lorem dolor si amet fully run network
+                  at 100% avoiding data-loss at any moments
+                </p>
+              </div>
+            </div>
+            <!-- faq 2 -->
+            <div class="bg-white p-[20px] rounded-2xl h-auto">
+              <div class="flex flex-row items-center justify-between gap-4">
+                <h5 class="text-lg xl:text-[20px] font-bold text-primary">
+                  Can we guarantee no any loss at all?
+                </h5>
+                <div
+                  class="size-[30px] rounded-full  grid place-items-center"
+                >
+                  <img
+                    src="./assets/icons/arrow-down.svg"
+                    alt="arrow-down"
+                  />
+                </div>
+              </div>
+            </div>
+            <!-- faq 3 -->
+            <div class="bg-[#080C2E] p-[20px] rounded-2xl h-auto">
+              <div class="flex flex-row items-center justify-between gap-4">
+                <div class="flex flex-row gap-[6px]">
+                  <img
+                    src="./assets/icons/device-message.svg"
+                    alt="device-message"
+                    class="brightness-0 invert"
+                  />
+                  <h5 class="text-[16px] text-white font-semibold text-primary">
+                    Send e-mail to us for other questions
+                  </h5>
+                </div>
+                <div
+                  class="size-[30px] rounded-full bg-white grid place-items-center"
+                >
+                  <img
+                    src="./assets/icons/arrow-down.svg"
+                    class="-rotate-90"
+                    alt="arrow-down"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- review section -->
+      <section
+        class="max-w-7xl rounded-[40px] p-6 sm:p-10 xl:p-[50px] flex flex-col lg:flex-row gap-8 xl:gap-0 items-center justify-between bg-[#640EF1] relative z-[1] md:mx-6 xl:mx-auto"
+      >
+        <aside class="flex flex-col gap-[40px] text-white">
+          <div
+            class="flex flex-row items-center gap-[6px] bg-white rounded-[100px] px-4 py-2 w-fit"
+          >
+            <img src="./assets/icons/global.svg" alt="global-icon" />
+            <h3 class="font-semibold text-primary text-sm sm:text-base">
+              We host more than 120,000 websites
+            </h3>
+          </div>
+          <div class="flex flex-col gap-[10px] max-w-[574px]">
+            <h1 class="text-4xl sm:text-[46px] tracking-normal leading-none">
+              Start Growing Today
+            </h1>
+            <h2 class="text-base font-medium leading-8">
+              We provide a variety of servers to grow your users <br />
+              acquisition much user-friendly and boosting up sales.
+            </h2>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-[20px]">
+            <button
+              class="py-4 px-10 font-bold bg-[#FFD15A] rounded-[100px] text-primary"
+            >
+              Explore More
+            </button>
+            <button class="flex flex-row items-center justify-center gap-2">
+              <img
+                src="./assets/icons/device-message.svg"
+                alt="device-message"
+                class="brightness-0 invert"
+              />
+              <span class="text-white font-semibold text-base"
+                >Schedule a Demo</span
+              >
+            </button>
+          </div>
+        </aside>
+        <aside class="grid grid-cols-2 sm:grid-cols-3 gap-[20px]">
+          <div
+            class="bg-white rounded-[26px] text-center flex flex-col justify-center items-center px-6 py-[26px]"
+          >
+            <img
+              src="./assets/icons/code.svg"
+              alt="review-1"
+              class="size-[46px] mb-[20px]"
+            />
+            <h5 class="text-primary font-bold text-lg">Web Crawl</h5>
+          </div>
+          <div
+            class="bg-white rounded-[26px] text-center flex flex-col justify-center items-center px-6 py-[26px]"
+          >
+            <img
+              src="./assets/icons/cpu-icon.svg"
+              alt="review-1"
+              class="size-[46px] mb-[20px]"
+            />
+            <h5 class="text-primary font-bold text-lg">Fast Report</h5>
+          </div>
+          <div
+            class="bg-[#080C2E] rounded-[26px] text-center flex flex-col justify-center items-center px-6 py-[26px] relative text-white"
+          >
+            <img
+              src="./assets/icons/shadow-card.svg"
+              alt="shadow-card"
+              class="absolute right-0 top-0 z-0"
+            />
+            <img
+              src="./assets/icons/security-user.svg"
+              alt="review-1"
+              class="relative z-[1] size-[46px] mb-[20px] invert brightness-0"
+            />
+            <h5 class="relative z-[1] font-bold text-lg">Anti-DDos</h5>
+            <button class="relative z-[1] text-[#8D90A8]">Learn More</button>
+          </div>
+          <div
+            class="bg-white rounded-[26px] text-center flex flex-col justify-center items-center px-6 py-[26px]"
+          >
+            <img
+              src="./assets/icons/status-up.svg"
+              alt="review-1"
+              class="size-[46px] mb-[20px]"
+            />
+            <h5 class="text-primary font-bold text-lg">Auto-Scale</h5>
+          </div>
+          <div
+            class="bg-white rounded-[26px] text-center flex flex-col justify-center items-center px-6 py-[26px]"
+          >
+            <img
+              src="./assets/icons/candle.svg"
+              alt="review-1"
+              class="size-[46px] mb-[20px]"
+            />
+            <h5 class="text-primary font-bold text-lg">AI Perform</h5>
+          </div>
+          <div
+            class="bg-white rounded-[26px] text-center flex flex-col justify-center items-center px-6 py-[26px]"
+          >
+            <img
+              src="./assets/icons/crown.svg"
+              alt="review-1"
+              class="size-[46px] mb-[20px]"
+            />
+            <h5 class="text-primary font-bold text-lg">Top Plugins+</h5>
+          </div>
+        </aside>
+      </section>
+    </main>
+    <footer
+      class="bg-[#070C29] pt-[330px] -mt-[250px] relative z-0 pb-[50px] px-4 md:px-6 xl:px-0"
+    >
+      <div
+        class="max-w-7xl m-auto flex flex-col sm:flex-row justify-between gap-12 sm:gap-[100px]"
+      >
+        <aside class="flex flex-col gap-[30px] order-2 sm:order-1">
+          <img
+            src="./assets/icons/weserve-white.svg"
+            alt="brand-logo"
+            class="h-[42px] w-fit"
+          />
+          <h5 class="text-[#8D90A8] text-base font-medium leading-7">
+            We host your empire business today <br />
+            using the latest technologies.
+          </h5>
+          <div class="flex flex-row gap-[14px]">
+            <a
+              href=""
+              class="size-[44px] bg-white grid place-items-center rounded-full"
+            >
+              <img
+                class="size-[24px]"
+                src="./assets/icons/sms.svg"
+                alt="social-media"
+              />
+            </a>
+            <a
+              href=""
+              class="size-[44px] bg-white grid place-items-center rounded-full"
+            >
+              <img
+                class="size-[24px]"
+                style="color: red"
+                src="./assets/icons/global-purple.svg"
+                alt="social-media"
+              />
+            </a>
+            <a
+              href=""
+              class="size-[44px] bg-white grid place-items-center rounded-full"
+            >
+              <img
+                class="size-[24px]"
+                src="./assets/icons/call.svg"
+                alt="social-media"
+              />
+            </a>
+            <a
+              href=""
+              class="size-[44px] bg-white grid place-items-center rounded-full"
+            >
+              <img
+                class="size-[24px]"
+                src="./assets/icons/video-play.svg"
+                alt="social-media"
+              />
+            </a>
+          </div>
+        </aside>
+        <aside
+          class="grid grid-cols-2 sm:grid-cols-3 text-white gap-[50px] xl:gap-[130px] order-1 sm:order-2"
+        >
+          <div>
+            <h5 class="text-lg font-bold mb-[30px]">Products</h5>
+            <div class="flex flex-col gap-4">
+              <a class="text-[#8D90A8] text-base font-medium" href=""
+                >Powerful Reports</a
+              >
+              <a class="text-[#8D90A8] text-base font-medium" href=""
+                >Blockchain</a
+              >
+              <a class="text-[#8D90A8] text-base font-medium" href=""
+                >Auto-Backup</a
+              >
+              <a class="text-[#8D90A8] text-base font-medium" href=""
+                >Data Science</a
+              >
+              <a class="text-[#8D90A8] text-base font-medium" href=""
+                >Auto-Scaling Up</a
+              >
+            </div>
+          </div>
+          <div>
+            <h5 class="text-lg font-bold mb-[30px]">Resources</h5>
+            <div class="flex flex-col gap-4">
+              <a class="text-[#8D90A8] text-base font-medium" href=""
+                >Support 24/7</a
+              >
+              <a class="text-[#8D90A8] text-base font-medium" href=""
+                >Help Center</a
+              >
+              <a class="text-[#8D90A8] text-base font-medium" href=""
+                >How-to Instructions</a
+              >
+              <a class="text-[#8D90A8] text-base font-medium" href=""
+                >Blog & Tips</a
+              >
+              <a class="text-[#8D90A8] text-base font-medium" href=""
+                >About Us</a
+              >
+            </div>
+          </div>
+          <div>
+            <h5 class="text-lg font-bold mb-[30px]">Products</h5>
+            <div class="flex flex-col gap-4">
+              <a class="text-[#8D90A8] text-base font-medium" href=""
+                >Privacy and Policy</a
+              >
+              <a class="text-[#8D90A8] text-base font-medium" href=""
+                >Terms and Conditions</a
+              >
+              <a class="text-[#8D90A8] text-base font-medium" href=""
+                >Investor Relations</a
+              >
+              <a class="text-[#8D90A8] text-base font-medium" href=""
+                >Join With Us</a
+              >
+              <a class="text-[#8D90A8] text-base font-medium" href=""
+                >Our Statistics</a
+              >
+            </div>
+          </div>
+        </aside>
+      </div>
+      <h6 class="text-center font-medium text-base text-[#8D90A8] mt-[50px]">
+        All Rights Reserved • Copyright Weserve by BuildWithAngga 2024 in
+        Bandung
+      </h6>
+    </footer>
+
+    <script>
+      const btnNav = document.querySelector("#btnNav");
+      const mobileNav = document.querySelector(".mobile-nav");
+
+      btnNav.addEventListener("click", () => {
+        mobileNav.classList.toggle("active");
+        btnNav.classList.toggle("active");
+      });
+    </script>
+  </body>
 </html>
